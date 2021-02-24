@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import './Header.css'
+
 export default {
   name: 'Header'
 
