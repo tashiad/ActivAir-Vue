@@ -5,10 +5,9 @@
 </template>
 
 <script>
-import './Header.css'
-
 export default {
   name: 'Header'
-
 }
 </script>
+
+<style src='./Header.css'></style>
