@@ -36,9 +36,9 @@ export default {
   props: {
     temperature: Number,
     locale: String,
-    aqi: String,
+    aqi: Number,
     windSpeed: Number,
-    humidity: String,
+    humidity: Number,
     timeStamp: String,
     weatherIconSrc: String
   }
