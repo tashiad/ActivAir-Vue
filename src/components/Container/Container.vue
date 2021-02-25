@@ -1,6 +1,16 @@
 <template>
-  <section>
-    <Card />
+  <section class="container">
+    <Card
+      v-for="(location, index) in locations"
+      :key="index"
+      :temperature="formatTemp(location)"
+      :locale="formatLocation(location)"
+      :aqi="location.data.current.pollution.aqius"
+      :windSpeed="formatWindSpeed(location)"
+      :humidity="location.data.current.weather.hu"
+      :timeStamp="formatTimeStamp(location)"
+      :weatherIconSrc="location.data.current.weather.ic"
+      />
   </section>
 </template>
 
@@ -11,6 +21,32 @@ export default {
   name: 'Container',
   components: {
     Card
+  },
+  props: {
+    locations: Array
+  },
+  methods: {
+
+    formatTemp: function (location) {
+      const temperature = location.data.current.weather.tp
+      return (temperature * 9 / 5 + 32)
+    },
+
+    formatLocation: function (location) {
+      return `${location.data.city}, ${location.data.state}`
+    },
+
+    formatWindSpeed: function (location) {
+      const windSpeed = location.data.current.weather.ws
+      return parseInt((windSpeed * 2.237).toFixed(2))
+    },
+
+    formatTimeStamp: function (location) {
+      const timeStamp = location.data.current.weather.ts
+      const date = new Date(timeStamp)
+      return (date.toDateString() + ' ' + date.toLocaleTimeString())
+    }
+
   }
 }
 </script>
