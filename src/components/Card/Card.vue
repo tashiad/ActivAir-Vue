@@ -1,6 +1,9 @@
 <template>
   <article>
-    <h2>Hiiii</h2>
+    <h2>Denver, CO</h2>
+    <img src="../../assets/01d.png">
+    <h3>Weather</h3>
+    <h3>AirQ</h3>
   </article>
 </template>
 
