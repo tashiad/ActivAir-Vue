@@ -1,6 +1,7 @@
 <template>
-  <form class="">
-    <select class="" name="" @change="selectState">
+  <form class="form">
+    <input class="button" type="submit" name="nearestLocation" value="Nearest Location" v-on:click.prevent="findNearestLocation">
+    <select class="dropdown" name="" @change="selectState">
       <option selected disabled>Choose a State</option>
       <option
         v-for="(state, index) in states"
@@ -8,7 +9,7 @@
         :value="state.state"
       >{{state.state}}</option>
     </select>
-    <select class="" name="" @change="selectCity">
+    <select class="dropdown" name="" @change="selectCity">
       <option selected disabled>Choose a City</option>
       <option
         v-for="(city, index) in cities"
@@ -16,7 +17,7 @@
         :value="city.city"
       >{{city.city}}</option>
     </select>
-    <input type="submit" name="submit" value="Submit" v-on:click.prevent="submitLocation">
+    <input class="button" type="submit" name="submit" value="Submit" v-on:click.prevent="submitLocation">
   </form>
 </template>
 
@@ -42,6 +43,9 @@ export default {
     submitLocation () {
       const location = { state: this.selectedState, city: this.selectedCity }
       this.$emit('updateLocale', location)
+    },
+    findNearestLocation () {
+      this.$emit('findNearest')
     }
   }
 }

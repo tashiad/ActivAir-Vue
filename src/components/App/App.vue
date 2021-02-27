@@ -1,13 +1,18 @@
 <template>
-  <div>
+  <div class="main">
     <Header />
     <Form
       :cities="cities"
       :states="states"
       v-on:updateState="retrieveCities"
       v-on:updateLocale="retrieveLocale"
+      v-on:findNearest="retrieveCurrent"
     />
-    <Container :locations="locations" />
+    <Container
+      :locations="locations"
+      v-on:removeCard="removeLocation"
+      v-on:refreshLocale="retrieveLocale"
+    />
   </div>
 </template>
 
@@ -31,6 +36,7 @@ export default {
   }),
   mounted: function () {
     this.$nextTick(function () {
+      this.retrieveLocalStorage()
       fetchAPI.getStates().then(data => {
         this.states = data.data
       })
@@ -43,9 +49,46 @@ export default {
       })
     },
     retrieveLocale (location) {
-      fetchAPI.getLocale(location.city, location.state).then(data => {
-        this.locations.push(data.data)
+      fetchAPI.getLocale(location.city, location.state).then(value => {
+        value.data.id = Date.now()
+        this.checkExistingLocations(value.data)
+        this.updateLocalStorage()
       })
+    },
+    retrieveCurrent () {
+      fetchAPI.getCurrent().then(location => {
+        location.data.id = Date.now()
+        this.checkExistingLocations(location.data)
+        this.updateLocalStorage()
+      })
+    },
+    removeLocation (id) {
+      const thisLocation = this.locations.find(location => {
+        return location.id === parseInt(id)
+      })
+      const thisLocationIndex = this.locations.indexOf(thisLocation)
+      this.locations.splice(thisLocationIndex, 1)
+      this.updateLocalStorage()
+    },
+    checkExistingLocations (newLocation) {
+      const foundLocation = this.locations.find(location => {
+        return location.city === newLocation.city && location.state === newLocation.state
+      })
+      if (foundLocation) {
+        const foundLocationIndex = this.locations.indexOf(foundLocation)
+        this.locations[foundLocationIndex] = newLocation
+      } else {
+        this.locations.push(newLocation)
+      }
+    },
+    retrieveLocalStorage () {
+      const saved = localStorage.getItem('savedLocations')
+      this.locations = JSON.parse(saved)
+      this.retrieveCurrent()
+    },
+    updateLocalStorage () {
+      const locationData = JSON.stringify(this.locations)
+      localStorage.setItem('savedLocations', locationData)
     }
   }
 }

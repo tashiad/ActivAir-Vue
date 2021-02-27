@@ -1,5 +1,9 @@
 <template>
-  <article class="location-card">
+  <article class="location-card" :id="id">
+    <div class="button-container">
+      <button class="button button-refresh" type="button" name="button" v-on:click.prevent="refreshLocation">🔄</button>
+      <button class="button" type="button" name="button" v-on:click.prevent="deleteCard">X</button>
+    </div>
     <h2>{{ locale }}</h2>
     <img :src="require(`../../assets/${formatWeatherIcon()}.png`)" class="weather-icon">
     <h3>Weather</h3>
@@ -8,24 +12,7 @@
     <p>Humidity: {{ humidity }}%</p>
     <h3>Air Quality</h3>
     <p>{{ aqi }} AQI</p>
-    <div v-if="aqi <= 50">
-      🟢 Good
-    </div>
-    <div v-else-if="aqi >= 51 && aqi <= 100">
-      🟡 Moderate
-    </div>
-    <div v-else-if="aqi >= 101 && aqi <= 150">
-      🟠 Unhealthy for Sensitive Groups
-    </div>
-    <div v-else-if="aqi >= 151 && aqi <= 200">
-      🔴 Unhealthy
-    </div>
-    <div v-else-if="aqi >= 201 && aqi <= 300">
-      🟣 Very Unhealthy
-    </div>
-    <div v-else-if="aqi >= 301">
-      💀 Hazardous
-    </div>
+    <p>{{ determineAqiMessage() }}</p>
     <p>{{ timeStamp }}</p>
   </article>
 </template>
@@ -40,11 +27,12 @@ export default {
     windSpeed: Number,
     humidity: Number,
     timeStamp: String,
-    weatherIconSrc: String
+    weatherIconSrc: String,
+    id: Number
   },
   methods: {
     formatWeatherIcon () {
-      const weatherIcons = ['01d', '01n', '02d', '02n', '03d', '04d', '09d', '10d', '10n']
+      const weatherIcons = ['01d', '01n', '02d', '02n', '03d', '04d', '09d', '10d', '10n', '11d', '13d', '50d']
       if (weatherIcons.includes(this.weatherIconSrc)) {
         return this.weatherIconSrc
       } else if (!weatherIcons.includes(this.weatherIconSrc)) {
@@ -52,6 +40,30 @@ export default {
           return this.weatherIconSrc.slice(0, 2) === icon.slice(0, 2)
         })
         return nums
+      }
+    },
+    deleteCard () {
+      const locationID = event.target.closest('article').id
+      this.$parent.$emit('removeCard', locationID)
+    },
+    refreshLocation () {
+      const cityState = this.locale.split(', ')
+      const location = { city: cityState[0], state: cityState[1] }
+      this.$parent.$emit('refreshLocale', location)
+    },
+    determineAqiMessage () {
+      if (this.aqi <= 50) {
+        return '🟢 Good'
+      } else if (this.aqi >= 51 && this.aqi <= 100) {
+        return '🟡 Moderate'
+      } else if (this.aqi >= 101 && this.aqi <= 150) {
+        return '🟠 Unhealthy for Sensitive Groups'
+      } else if (this.aqi >= 151 && this.aqi <= 200) {
+        return '🔴 Unhealthy'
+      } else if (this.aqi >= 201 && this.aqi <= 300) {
+        return '🟣 Very Unhealthy'
+      } else if (this.aqi >= 301) {
+        return '💀 Hazardous'
       }
     }
   }
