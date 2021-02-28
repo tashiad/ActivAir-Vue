@@ -1,7 +1,13 @@
 <template>
   <article class="location-card" :id="id">
     <div class="button-delete-container">
-      <button class="card-button button-delete" type="button" name="button" v-on:click.prevent="deleteCard">X</button>
+      <button
+        class="card-button button-delete"
+        type="button"
+        name="button"
+        v-on:click.prevent="deleteCard">
+        X
+      </button>
     </div>
     <h2>{{ formatLocation() }}</h2>
     <img :src="require(`../../assets/${formatWeatherIcon()}.png`)" class="weather-icon">
@@ -12,9 +18,17 @@
     <h3>Air Quality</h3>
     <p>{{ aqi }} AQI</p>
     <p>{{ determineAqiMessage() }}</p>
-    <button class="button-allTrails" type="button" name="button">Plan an activity here on AllTrails</button>
+    <button class="button-allTrails" type="button" name="button">
+      <a :href="generateAllTrailsURL()" target="_blank" class="button-allTrails-text">Plan an activity in {{ city }} on AllTrails</a>
+    </button>
     <p class="timeStamp">Last Update: {{ timeStamp }}
-      <button class="card-button button-refresh" type="button" name="button" v-on:click.prevent="refreshLocation">Refresh</button>
+      <button
+        class="card-button button-refresh"
+        type="button"
+        name="button"
+        v-on:click.prevent="refreshLocation">
+        Refresh
+      </button>
     </p>
   </article>
 </template>
@@ -71,6 +85,11 @@ export default {
       } else if (this.aqi >= 301) {
         return '💀 Hazardous'
       }
+    },
+    generateAllTrailsURL () {
+      const formattedCity = this.city.toLowerCase()
+      const formattedState = this.state.toLowerCase()
+      return `https://www.alltrails.com/us/${formattedState}/${formattedCity}`
     }
   }
 }
