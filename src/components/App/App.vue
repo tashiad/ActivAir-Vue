@@ -61,6 +61,7 @@ export default {
     retrieveCurrent () {
       fetchAPI.getCurrent().then(location => {
         location.data.id = Date.now()
+        location.data.currentLocation = true
         this.checkExistingLocations(location.data)
         this.updateLocalStorage()
       })
