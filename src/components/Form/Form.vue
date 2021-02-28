@@ -1,7 +1,8 @@
 <template>
   <form class="form">
     <input class="button" type="submit" name="nearestLocation" value="Nearest Location" v-on:click.prevent="findNearestLocation">
-    <select class="dropdown" name="" @change="selectState">
+    <label for="states">States:</label>
+    <select class="dropdown" id="states" @change="selectState">
       <option selected disabled>Choose a State</option>
       <option
         v-for="(state, index) in states"
@@ -9,7 +10,8 @@
         :value="state.state"
       >{{state.state}}</option>
     </select>
-    <select class="dropdown" name="" @change="selectCity">
+    <label for="cities">Cities:</label>
+    <select class="dropdown" id="cities" @change="selectCity">
       <option selected disabled>Choose a City</option>
       <option
         v-for="(city, index) in cities"
@@ -17,6 +19,7 @@
         :value="city.city"
       >{{city.city}}</option>
     </select>
+    <p>{{ dropdownErrorMessage }}</p>
     <input class="button" type="submit" name="submit" value="Submit" v-on:click.prevent="submitLocation">
   </form>
 </template>
@@ -26,7 +29,8 @@ export default {
   name: 'Form',
   props: {
     cities: Array,
-    states: Array
+    states: Array,
+    dropdownErrorMessage: String
   },
   data: () => ({
     selectedState: '',
