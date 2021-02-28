@@ -63,8 +63,10 @@ export default {
         })
         return nums
       } else if (this.weatherIconSrc.includes('n')) {
+        this.weatherIconAlt = this.weatherIcons[1].desc
         return this.weatherIcons[1]
       } else {
+        this.weatherIconAlt = this.weatherIcons[0].desc
         return this.weatherIcons[0]
       }
     },
