@@ -4,8 +4,10 @@
       v-for="location in locations"
       :key="location.id"
       :id="location.id"
+      :currentLocation="location.currentLocation"
       :temperature="formatTemp(location)"
-      :locale="formatLocation(location)"
+      :city="location.city"
+      :state="location.state"
       :windSpeed="formatWindSpeed(location)"
       :timeStamp="formatTimeStamp(location)"
       :aqi="location.current.pollution.aqius"
@@ -27,27 +29,20 @@ export default {
     locations: Array
   },
   methods: {
-
-    formatTemp: function (location) {
+    formatTemp (location) {
       const temperature = location.current.weather.tp
       return parseFloat((temperature * 9 / 5 + 32).toFixed(1))
     },
-
-    formatLocation: function (location) {
-      return `${location.city}, ${location.state}`
-    },
-
-    formatWindSpeed: function (location) {
+    formatWindSpeed (location) {
       const windSpeed = location.current.weather.ws
       return parseFloat((windSpeed * 2.237).toFixed(1))
     },
-
-    formatTimeStamp: function (location) {
+    formatTimeStamp (location) {
       const timeStamp = location.current.weather.ts
       const date = new Date(timeStamp)
-      return (date.toDateString() + ' ' + date.toLocaleTimeString())
+      const time = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      return `${date.toDateString()} at ${time}`
     }
-
   }
 }
 </script>
