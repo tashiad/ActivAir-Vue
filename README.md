@@ -48,48 +48,40 @@ When the site loads, the you'll see a form with options to get info for you curr
 <p align = "center">
 <img width="1440" alt="homepage" src="">
 </p>
-    <details>
-      <summary>Under the Hood</summary>
-      The current location card data comes from our <code>fetch</code> to the AirVisual API IP geolocation endpoint. Conditional rendering in Vue.js allowed us to include "Current Location" copy at the top of the card without the delete button.
-
-      We used <code>unshift</code> to ensure that the current location card always shows up first in the render even as other location cards are added.
-
-      Once a current location card has been added from the form, it is also added to <code>localStorage</code> and will show up on refresh with data from the latest timestamp.
-    </details>
+  <details>
+    <summary>Under the Hood</summary>
+    The current location card data comes from our <code>fetch</code> to the AirVisual API IP geolocation endpoint. Conditional rendering in Vue.js allowed us to include "Current Location" copy at the top of the card without the delete button. We used <code>unshift</code> to ensure that the current location card always shows up first in the render even as other location cards are added. Once a current location card has been added from the form, it is also added to <code>localStorage</code> and will show up on refresh with data from the latest timestamp.
+  </details>
 
 #### Display Other Locations
 To see what the AQI and weather looks like in other areas, you can choose supported cities and states from the dropdown menus in the form. Once a new location has been added, it's automatically saved so that you can come back to it later on. You can also delete a location if you no longer want to view it. Each card can be individually refreshed to view the latest weather and AQI data.
 <p align = "center">
 <img width="1440" alt="search" src="">
 </p>
-    <details>
-      <summary>Under the Hood</summary>
-      On load, the state form dropdown menu is populated with a <code>fetch</code> to AirVisual's "List supported states in a country" endpoint. Once a state has been selected, the cities dropdown is populated with a <code>fetch</code> to AirVisual's "List supported cities in a state" endpoint for the selected state.
-
-      On submit, another <code>fetch</code> to their "Get specified city data" endpoint interpolating both state and city dropdown values provides the data needed to render a new card for that location.
-
-      Error handling was used to disable the cities dropdown and submit button until the form has met certain conditions, and to display a server error message to the UI when the calls/minute limit has been reached. Locations are saved to <code>localStorage</code> and can also be deleted.
-    </details>
+  <details>
+    <summary>Under the Hood</summary>
+    On load, the state form dropdown menu is populated with a <code>fetch</code> to AirVisual's "List supported states in a country" endpoint. Once a state has been selected, the cities dropdown is populated with a <code>fetch</code> to AirVisual's "List supported cities in a state" endpoint for the selected state. On submit, another <code>fetch</code> to their "Get specified city data" endpoint interpolating both state and city dropdown values provides the data needed to render a new card for that location. Error handling was used to disable the cities dropdown and submit button until the form has met certain conditions, and to display a server error message to the UI when the calls/minute limit has been reached. Locations are saved to <code>localStorage</code> and can also be deleted.
+  </details>
 
 #### Activity Recommendations
 To make the app directly relevant to our active/outdoorsy target audience, messages are displayed with specific recommendations for outdoor activity based on a location's given AQI and what [AirNow.gov](https://www.airnow.gov/) suggests is safe.
 <p align = "center">
 <img width="1440" alt="rating" src="">
 </p>
-    <details>
-      <summary>Under the Hood</summary>
-      Conditional rendering in Vue.js allowed us to render colors, recommendation messages, and more based on where a location's AQI falls within a range of numbers on the scale.
-    </details>
+  <details>
+    <summary>Under the Hood</summary>
+    Conditional rendering in Vue.js allowed us to render colors, recommendation messages, and more based on where a location's AQI falls within a range of numbers on the scale.
+  </details>
 
 #### View Trails
 Taking the activity recommendations a step further, we added a button to each location card that sends users to the trails page for that location on AllTrails.
 <p align = "center">
 <img width="1440" alt="rating" src="">
 </p>
-    <details>
-      <summary>Under the Hood</summary>
-      By formatting the city and state inputs from the form to match the [AllTrails](https://www.alltrails.com/) URL format, we were able to interpolate the link for each individual card so that the user lands on that particular location page.
-    </details>
+  <details>
+    <summary>Under the Hood</summary>
+    By formatting the city and state inputs from the form to match the [AllTrails](https://www.alltrails.com/) URL format, we were able to interpolate the link for each individual card so that the user lands on that particular location page.
+  </details>
 
 ### Accessibility
 This app was built with all users in mind. We used Lighthouse and [WAVE](https://wave.webaim.org/) to work towards including as broad of an audience as we could. Of course, as we are committed to including all users, we are ready to make future edits to address any areas that we may have missed.
@@ -114,7 +106,7 @@ While we were pleased that learning Vue.js from scratch in such a short amount o
 
 We got around this by either waiting it out for a minute and, if the daily limit had been reached, getting a new API key. We did our best to mitigate the poor user experience this can cause with error handling, but there's only so much we could do with the free version of the API. The biggest change we'd make to our app without these call limits would be to refresh the timestamp (make a new API call) for each card in local storage on load, rather than just the current location card. For now, the user is only able to refresh location cards manually in order to reduce the number of calls made.
 
-We had decided to bring in our data from the API calls early on in the process because we weren't sure how long it would take us to figure it out in the new framework. But in the future, we would likely try to hold out on implementing the API calls for as long as possible and bring in our data from our mock data file to speed up our development & QA testing process. 
+We had decided to bring in our data from the API calls early on in the process because we weren't sure how long it would take us to figure it out in the new framework. But in the future, we would likely try to hold out on implementing the API calls for as long as possible and bring in our data from our mock data file to speed up our development & QA testing process.
 
 ---
 
