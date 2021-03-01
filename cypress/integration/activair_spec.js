@@ -1,6 +1,7 @@
+import key from '../../src/keyAPI'
+
 describe('ActivAir Website', () => {
   const baseUrl = 'http://localhost:8080/'
-  const key = '643484ca-9138-4647-b058-430c60bdb96f'
   const citiesAPI = `http://api.airvisual.com/v2/cities?state=Colorado&country=USA&key=${key}`
   const statesAPI = `http://api.airvisual.com/v2/states?country=USA&key=${key}`
   const cityStateAPI = `http://api.airvisual.com/v2/city?city=Denver&state=Colorado&country=USA&key=${key}`
