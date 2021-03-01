@@ -1,18 +1,26 @@
 .form {
   height: 200px;
-  width: 100%;
+  width: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  color: whitesmoke;
+  background-color: rgba(245, 245, 245, 0.85);
+  color: #2c3e50;
+  border-radius: 1rem;
+  margin: .75rem;
   padding: 2rem;
 }
 
 .dropdown {
   font-size: 18px;
+  background-color: rgba(245, 245, 245, 0.95);
+  border-radius: .5rem;
 }
 
 .button {
   font-size: 16px;
+  background-color: rgba(245, 245, 245, 0.95);
+  border: 1px solid #428a13;
+  border-radius: .5rem;
 }
