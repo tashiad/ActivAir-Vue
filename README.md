@@ -50,7 +50,11 @@ When the site loads, the you'll see a form with options to get info for you curr
 </p>
     <details>
       <summary>Under the Hood</summary>
-      The current location card data comes from our <code>fetch</code> to the AirVisual API IP geolocation endpoint. Conditional rendering in Vue.js allowed us to include "Current Location" copy at the top of the card without the delete button. We used <code>unshift</code> to ensure that the current location card always shows up first in the render even as other location cards are added. Once a current location card has been added from the form, it is also added to <code>localStorage</code> and will show up on refresh with data from the latest timestamp.
+      The current location card data comes from our <code>fetch</code> to the AirVisual API IP geolocation endpoint. Conditional rendering in Vue.js allowed us to include "Current Location" copy at the top of the card without the delete button.
+
+      We used <code>unshift</code> to ensure that the current location card always shows up first in the render even as other location cards are added.
+
+      Once a current location card has been added from the form, it is also added to <code>localStorage</code> and will show up on refresh with data from the latest timestamp.
     </details>
 
 #### Display Other Locations
@@ -60,7 +64,11 @@ To see what the AQI and weather looks like in other areas, you can choose suppor
 </p>
     <details>
       <summary>Under the Hood</summary>
-      On load, the state form dropdown menu is populated with a <code>fetch</code> to AirVisual's "List supported states in a country" endpoint. Once a state has been selected, the cities dropdown is populated with a <code>fetch</code> to AirVisual's "List supported cities in a state" endpoint for the selected state. On submit, another <code>fetch</code> to their "Get specified city data" endpoint interpolating both state and city dropdown values provides the data needed to render a new card for that location. Error handling was used to disable the cities dropdown and submit button until the form has met certain conditions, and to display a server error message to the UI when the calls/minute limit has been reached. Locations are saved to <code>localStorage</code> and can also be deleted.
+      On load, the state form dropdown menu is populated with a <code>fetch</code> to AirVisual's "List supported states in a country" endpoint. Once a state has been selected, the cities dropdown is populated with a <code>fetch</code> to AirVisual's "List supported cities in a state" endpoint for the selected state.
+
+      On submit, another <code>fetch</code> to their "Get specified city data" endpoint interpolating both state and city dropdown values provides the data needed to render a new card for that location.
+
+      Error handling was used to disable the cities dropdown and submit button until the form has met certain conditions, and to display a server error message to the UI when the calls/minute limit has been reached. Locations are saved to <code>localStorage</code> and can also be deleted.
     </details>
 
 #### Activity Recommendations
@@ -80,22 +88,33 @@ Taking the activity recommendations a step further, we added a button to each lo
 </p>
     <details>
       <summary>Under the Hood</summary>
-      By formatting the city and state inputs from the form to match the AllTrails URL format, we were able to interpolate the link for each individual card so that the user lands on that particular location page.
+      By formatting the city and state inputs from the form to match the [AllTrails](https://www.alltrails.com/) URL format, we were able to interpolate the link for each individual card so that the user lands on that particular location page.
     </details>
 
 ### Accessibility
 This app was built with all users in mind. We used Lighthouse and [WAVE](https://wave.webaim.org/) to work towards including as broad of an audience as we could. Of course, as we are committed to including all users, we are ready to make future edits to address any areas that we may have missed.
 
 ### Future Improvements
-TO DO
-- Limitations with API calls (would like everything to refresh, not have calls/minute limit, etc)
-- Login using firebase?
-- Router
+- Allow a user to login to see their saved locations (rather than using local storage). We'd love to dive into Firebase for this as another new "stretch" technology for us.
+- Implement (and learn) Vue Router so that we can include an FAQ page about AQI and how it can impact your health when being active outdoors.
+- Bring in AQI rankings, interactive maps, or other data visualizations
+- Use a different API? (See notes in "Learning Process" below)
 
 ---
 
 ## Learning Process
-TO DO
+This is the first time we've had to learn a new technology without the help of Turing's lesson plans and instructor knowledge. The 3 of us in our group had 9 days total to learn Vue.js and create our application.
+
+We started out by choosing an API, discussing our MVP, wireframing, and creating a project board. Then, we independently taught ourselves Vue.js for the first 2 days of the project. We had some context for how Vue.js should work because we had just learned React. Because we all loved Scrimba's React course, we started out by diving into their Vue.js course, which we all agreed was unfortunately not up to the same standard. So we switched gears and went directly to the Vue/js docs and video courses, which turned out to be very useful!
+
+Similar to `Create React App`, we discovered that you can easily spin up a Vue.js app in the CLI. So once we all felt like we had a good foundation in Vue.js, we started out by doing some paired programming to make sure we were all on the same page with our learning goals and understanding the code together. Once we felt comfortable with that, we were able to split up tasks to make sure we were on track to meet our deadline.
+
+### Challenges
+While we were pleased that learning Vue.js from scratch in such a short amount of time was actually quite manageable, most of the issues we ran into were with the API. We used the free version from IQAir AirVisual, which has call limits by the minute, day, month, and year. This made building the app and QA testing new functionality more difficult because if we tried to interact with our form too quickly/too often, the API would throw an error in the console.
+
+We got around this by either waiting it out for a minute and, if the daily limit had been reached, getting a new API key. We did our best to mitigate the poor user experience this can cause with error handling, but there's only so much we could do with the free version of the API. The biggest change we'd make to our app without these call limits would be to refresh the timestamp (make a new API call) for each card in local storage on load, rather than just the current location card. For now, the user is only able to refresh location cards manually in order to reduce the number of calls made.
+
+We had decided to bring in our data from the API calls early on in the process because we weren't sure how long it would take us to figure it out in the new framework. But in the future, we would likely try to hold out on implementing the API calls for as long as possible and bring in our data from our mock data file to speed up our development & QA testing process. 
 
 ---
 
