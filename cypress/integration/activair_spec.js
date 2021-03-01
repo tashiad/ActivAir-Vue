@@ -14,21 +14,24 @@ describe('ActivAir Website', () => {
       .get('h2').should('have.text', 'Find fresh air for your outdoor activities.')
   })
 
-  it('Should populate a location card with prefilled nearest location data', () => {
+  it('Should populate a location card with mock nearest location data', () => {
     cy.intercept('GET', nearestAPI, { fixture: 'location-thornton' })
-    cy.intercept('GET', statesAPI, { fixture: 'state-data' })
+      .intercept('GET', statesAPI, { fixture: 'state-data' })
       .visit(baseUrl)
       .get('input[name=nearestLocation]').click()
+      .get('.location-card').find('h2').should('have.text', 'Thornton, Colorado')
   })
 
-  it('Should populate state and city dropdowns with relevant information', () => {
+  it('Should populate state and city dropdowns with relevant information and create a card from the selected location', () => {
     cy.intercept('GET', cityStateAPI, { fixture: 'location-denver' })
-    cy.intercept('GET', statesAPI, { fixture: 'state-data' })
+      .intercept('GET', statesAPI, { fixture: 'state-data' })
       .intercept('GET', citiesAPI, { fixture: 'city-data' })
       .visit(baseUrl)
       .get('select#dropdown-states').select('Colorado').should('have.value', 'Colorado')
       .get('select#dropdown-cities').select('Denver').should('have.value', 'Denver')
       .get('input[name=submit]').click()
+      .get('.location-card').find('h2').should('have.text', 'Denver, Colorado')
+      .get('.location-card').find('.button-delete').click()
   })
 
   it('Should display an error message when the server returns a 400 error', () => {
