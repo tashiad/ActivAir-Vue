@@ -18,8 +18,10 @@ describe('ActivAir Website', () => {
   })
 
   it('Should populate state and city dropdowns with relevant information', () => {
-    cy.get('select#dropdown-states').select('Colorado')
-      .intercept('GET', citiesAPI, { fixture: 'city-data.json' })
+    cy.intercept('GET', citiesAPI, { fixture: 'city-data.json' })
+      .get('select#dropdown-states').select('Colorado')
       .get('select#dropdown-cities').select('Denver').should('have.value', 'Denver')
+      .get('input[name=submit]').click()
+      .intercept('GET', cityStateAPI, { fixture: 'location-denver.json' })
   })
 })
