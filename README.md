@@ -80,7 +80,7 @@ Taking the activity recommendations a step further, we added a button to each lo
 </p>
   <details>
     <summary>Under the Hood</summary>
-    By formatting the city and state inputs from the form to match the [AllTrails](https://www.alltrails.com/) URL format, we were able to interpolate the link for each individual card so that the user lands on that particular location page.
+    By formatting the city and state inputs from the form to match the AllTrails URL format, we were able to interpolate the link for each individual card so that the user lands on that particular location page.
   </details>
 
 ### Accessibility
