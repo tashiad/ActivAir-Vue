@@ -19,7 +19,7 @@
         :value="city.city"
       >{{city.city}}</option>
     </select>
-    <p>{{ dropdownErrorMessage }}</p>
+    <p class="error-message">{{ dropdownErrorMessage }}</p>
     <input class="button" type="submit" name="submit" value="Submit" id="submit" v-on:click.prevent="submitLocation" disabled>
   </form>
 </template>

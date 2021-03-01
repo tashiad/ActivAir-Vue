@@ -21,13 +21,25 @@ describe('ActivAir Website', () => {
       .get('input[name=nearestLocation]').click()
   })
 
-  it.skip('Should populate state and city dropdowns with relevant information', () => {
+  it('Should populate state and city dropdowns with relevant information', () => {
     cy.intercept('GET', cityStateAPI, { fixture: 'location-denver' })
     cy.intercept('GET', statesAPI, { fixture: 'state-data' })
       .intercept('GET', citiesAPI, { fixture: 'city-data' })
       .visit(baseUrl)
-      .get('select#dropdown-states').select('Colorado')
-      .get('select#dropdown-cities').select('Denver')
+      .get('select#dropdown-states').select('Colorado').should('have.value', 'Colorado')
+      .get('select#dropdown-cities').select('Denver').should('have.value', 'Denver')
       .get('input[name=submit]').click()
+  })
+
+  it('Should display an error message when the server returns a 400 error', () => {
+    cy.intercept('GET', statesAPI, { statusCode: 404 })
+      .visit(baseUrl)
+      .get('.error-message').should('have.text', 'Please wait a minute and refresh the page. Something went wrong with the server.')
+  })
+
+  it('Should display an error message when the server returns a 500 error', () => {
+    cy.intercept('GET', statesAPI, { statusCode: 500 })
+      .visit(baseUrl)
+      .get('.error-message').should('have.text', 'Please wait a minute and refresh the page. Something went wrong with the server.')
   })
 })
