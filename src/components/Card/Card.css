@@ -79,8 +79,8 @@
 }
 
 .button-allTrails {
-  background-color: #428a13;
-  border: 1px solid #428a13;
+  background-color: #034001;
+  border: 1px solid #034001;
   border-radius: 10px;
   margin: 5%;
   padding: 3% 5%;
@@ -92,6 +92,14 @@
   border: 1px solid #97B481;
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
   transition: all 0.4s ease 0s;
+}
+
+.button-allTrails:hover > .button-allTrails-text {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  line-height: 1.5;
+  cursor: pointer;
 }
 
 .button-allTrails-text {
