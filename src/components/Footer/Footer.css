@@ -24,6 +24,20 @@ a:hover {
 
 @media screen and (max-width: 768px) {
   footer {
+    width: 95%;
     flex-direction: column;
+    padding: 1rem;
+  }
+
+  p{
+    margin: .25rem;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  footer {
+    width: 300px;
+    font-size: x-small;
+    padding: .25rem;
   }
 }

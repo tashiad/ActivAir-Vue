@@ -50,3 +50,10 @@
   cursor: pointer;
   border-radius: .35rem;
 }
+
+
+@media screen and (max-width: 320px) {
+  .form {
+    width: 225px;
+  }
+}
