@@ -16,12 +16,12 @@
     <h3>Air Quality</h3>
     <div class="aqi-message">
       <div class="aqi-circle" :style="determineAqiStyle()"><p>AQI: {{ aqi }}</p></div>
-      <p class="aqi-rating"><b>{{ determineAqiRating() }} </b><a href="https://www.airnow.gov/aqi-and-health/" target="_blank"><img src="https://img.icons8.com/metro/16/000000/info.png"/></a></p>
+      <p class="aqi-rating"><b>{{ determineAqiRating() }} </b><a href="https://www.airnow.gov/aqi-and-health/" target="_blank" rel="noreferrer"><img src="https://img.icons8.com/metro/16/000000/info.png" alt="black circle with lowercase i icon for more information"/></a></p>
       <p class="aqi-text">{{ determineAqiText() }}</p>
     </div>
     <hr>
     <button class="button-allTrails" type="button" name="button">
-      <a :href="generateAllTrailsURL()" target="_blank" class="button-allTrails-text">Plan an activity in {{ city }} on AllTrails</a>
+      <a :href="generateAllTrailsURL()" target="_blank" class="button-allTrails-text" rel="noreferrer">Plan an activity in {{ city }} on AllTrails</a>
     </button>
     <hr>
     <p class="timeStamp">Last Update: {{ timeStamp }}
