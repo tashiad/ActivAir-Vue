@@ -28,9 +28,5 @@ html {
     background-attachment: fixed;
     background-image: url('../../assets/vertical-background.jpg');
     background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: none;
-    padding: none;
   }
 }

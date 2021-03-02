@@ -10,7 +10,7 @@
 }
 
 .location-title {
-  margin-bottom: .75rem;
+  margin-bottom: 0.75rem;
 }
 
 h3 {
@@ -28,7 +28,7 @@ h3 {
   height: fit-content;
 }
 
-.air-quality-heading {
+.aqi-heading {
   margin: 1rem;
 }
 
@@ -79,9 +79,9 @@ h3 {
 
 .button-delete:hover {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
   transition: all 0.4s ease 0s;
   cursor: pointer;
+  border-radius: 10px;
 }
 
 .button-refresh {

@@ -17,7 +17,7 @@
       </div>
     </section>
     <hr>
-    <h3 class="air-quality-heading">Air Quality</h3>
+    <h3 class="aqi-heading">Air Quality</h3>
     <div class="aqi-message">
       <div class="aqi-circle" :style="determineAqiStyle()"><p>AQI: {{ aqi }}</p></div>
       <p class="aqi-rating"><b>{{ determineAqiRating() }} </b><a href="https://www.airnow.gov/aqi-and-health/" target="_blank" rel="noreferrer"><img src="https://img.icons8.com/metro/16/000000/info.png" alt="black circle with lowercase i icon for more information"/></a></p>
