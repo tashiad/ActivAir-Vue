@@ -9,13 +9,17 @@ h1 {
   margin: .5rem;
 }
 
-@media screen and (max-width: 414px) {
+h2 {
+  font-size: x-large;
+}
+
+@media screen and (max-width: 600px) {
   header {
     width: 250px;
   }
 
   h2 {
-    font-size: large;
+    font-size: medium;
   }
 }
 

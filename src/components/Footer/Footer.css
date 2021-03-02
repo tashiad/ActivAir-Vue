@@ -34,7 +34,7 @@ a:hover {
   }
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 600px) {
   footer {
     width: 300px;
     font-size: x-small;
