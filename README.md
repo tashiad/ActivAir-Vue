@@ -46,7 +46,7 @@ TO DO [Deployment Link]()
 #### Display Current Location
 When the site loads, the you'll see a form with options to get info for your current location or to choose a location from a dropdown list of available cities and states. If you click "Nearest Location," a card will show up and persist on refresh with the latest data so you can stay up to date with the AQI and weather for where you are.
 <p align = "center">
-<img width="1440" alt="homepage" src="">
+<img width="1440" alt="Display Current Location" src="https://user-images.githubusercontent.com/66852774/109685355-6a819c80-7b3e-11eb-8dc5-f1c338256855.png">
 </p>
   <details>
     <summary>Under the Hood</summary>
@@ -56,7 +56,7 @@ When the site loads, the you'll see a form with options to get info for your cur
 #### Display Other Locations
 To see what the AQI and weather looks like in other areas, you can choose supported cities and states from the dropdown menus in the form. Once a new location has been added, it's automatically saved so that you can come back to it later on. You can also delete a location if you no longer want to view it. Each card can be individually refreshed to view the latest weather and AQI data.
 <p align = "center">
-<img width="1440" alt="search" src="">
+<img width="1440" alt="Display Other Locations" src="https://user-images.githubusercontent.com/66852774/109685516-913fd300-7b3e-11eb-92f5-4607540fe329.png">
 </p>
   <details>
     <summary>Under the Hood</summary>
@@ -66,7 +66,7 @@ To see what the AQI and weather looks like in other areas, you can choose suppor
 #### Activity Recommendations
 To make the app directly relevant to our active/outdoorsy target audience, messages are displayed with specific recommendations for outdoor activity based on a location's given AQI and what [AirNow.gov](https://www.airnow.gov/) suggests is safe.
 <p align = "center">
-<img width="1440" alt="rating" src="">
+<img width="1440" alt="AQI Activity Recommendations" src="https://user-images.githubusercontent.com/66852774/109685668-b59baf80-7b3e-11eb-8d0e-95bcda281302.png">
 </p>
   <details>
     <summary>Under the Hood</summary>
@@ -76,7 +76,7 @@ To make the app directly relevant to our active/outdoorsy target audience, messa
 #### View Trails
 Taking the activity recommendations a step further, we added a button to each location card that sends users to the trails page for that location on AllTrails.
 <p align = "center">
-<img width="1440" alt="rating" src="">
+<img width="1440" alt="AllTrails" src="https://user-images.githubusercontent.com/66852774/109685890-f09de300-7b3e-11eb-9c12-cbb088d2fea4.png">
 </p>
   <details>
     <summary>Under the Hood</summary>
