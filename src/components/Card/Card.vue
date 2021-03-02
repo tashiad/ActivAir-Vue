@@ -1,7 +1,7 @@
 <template>
   <article class="location-card" :id="id">
     <div v-if="currentLocation">
-      <p>Current Location</p>
+      <p><b>Current Location</b></p>
     </div>
     <div v-else class="button-delete-container">
       <button class="card-button button-delete" type="button" name="button" v-on:click.prevent="deleteCard">X</button>

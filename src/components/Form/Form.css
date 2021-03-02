@@ -1,21 +1,24 @@
 .form {
-  height: 200px;
+  height: 150px;
   width: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  background-color: rgba(245, 245, 245, 0.85);
+  background-color: rgba(245, 245, 245, 0.90);
   color: #2c3e50;
   border-radius: 1rem;
-  margin: .75rem;
+  margin: 1.5rem 0rem .5rem 0rem;
   padding: 2rem;
 }
 
 .dropdown {
+  width: 250px;
   background-color: rgba(245, 245, 245, 0.95);
   font-size: 18px;
+  text-align-last: center;
   border-radius: .35rem;
+  margin-top: 1.5rem;
 }
 
 .dropdown:focus {
