@@ -1,10 +1,10 @@
 .location-card {
-  width: 300px;
-  height: auto;
   background-color: rgba(245, 245, 245, 1);
-  color: #2c3e50;
   border: 1px solid black;
   border-radius: 1rem;
+  color: #2c3e50;
+  width: 300px;
+  height: auto;
   margin: 1rem;
   padding: 0.5rem;
 }
@@ -40,16 +40,15 @@ h3 {
 }
 
 .aqi-circle {
-  width: 90px;
-  height: 90px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 150px;
   color: #fff;
   font-weight: bold;
   text-align: center;
-  border-radius: 150px;
-
+  width: 90px;
+  height: 90px;
 }
 
 .aqi-rating {
@@ -64,8 +63,8 @@ h3 {
 
 .card-button {
   background-color: inherit;
-  color: #2c3e50;
   border: none;
+  color: #2c3e50;
 }
 
 .button-delete {
