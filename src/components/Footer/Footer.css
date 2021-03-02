@@ -36,7 +36,7 @@ a:hover {
 @media screen and (max-width: 600px) {
   footer {
     width: 300px;
-    font-size: x-small;
+    font-size: 11px;
     padding: .25rem;
   }
 }
