@@ -7,10 +7,10 @@
       <button class="card-button button-delete" type="button" name="button" v-on:click.prevent="deleteCard">X</button>
     </div>
     <h2 class="location-title">{{ formatLocation() }}</h2>
+    <h3>Weather</h3>
     <section class="weather-section">
       <img :src="require(`../../assets/${formatWeatherIcon()}.png`)" :alt="weatherIconAlt" class="weather-icon">
       <div class="weather-data-display">
-        <h3>Weather</h3>
         <p>{{ temperature }}°F</p>
         <p>Wind Speed: {{ windSpeed }}mph</p>
         <p>Humidity: {{ humidity }}%</p>
