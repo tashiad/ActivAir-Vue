@@ -21,15 +21,15 @@
 }
 
 .aqi-circle {
+  width: 90px;
+  height: 90px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 150px;
-  width: 90px;
-  height: 90px;
   font-weight: bold;
   color: #fff;
   text-align: center;
+  border-radius: 150px;
   margin-right: 5%;
 }
 
