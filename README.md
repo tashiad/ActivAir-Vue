@@ -44,7 +44,7 @@ TO DO [Deployment Link]()
 
 
 #### Display Current Location
-When the site loads, the you'll see a form with options to get info for you current location or to choose a location from a dropdown list of available cities and states. If you click "Nearest Location," a card will show up and persist on refresh with the latest data so you can stay up to date with the AQI and weather for where you are.
+When the site loads, the you'll see a form with options to get info for your current location or to choose a location from a dropdown list of available cities and states. If you click "Nearest Location," a card will show up and persist on refresh with the latest data so you can stay up to date with the AQI and weather for where you are.
 <p align = "center">
 <img width="1440" alt="homepage" src="">
 </p>
@@ -97,14 +97,14 @@ This app was built with all users in mind. We used Lighthouse and [WAVE](https:/
 ## Learning Process
 This is the first time we've had to learn a new technology without the help of Turing's lesson plans and instructor knowledge. The 3 of us in our group had 9 days total to learn Vue.js and create our application.
 
-We started out by choosing an API, discussing our MVP, wireframing, and creating a project board. Then, we independently taught ourselves Vue.js for the first 2 days of the project. We had some context for how Vue.js should work because we had just learned React. Because we all loved Scrimba's React course, we started out by diving into their Vue.js course, which we all agreed was unfortunately not up to the same standard. So we switched gears and went directly to the Vue/js docs and video courses, which turned out to be very useful!
+We started out by choosing an API, discussing our MVP, wireframing, and creating a project board. Then, we independently taught ourselves Vue.js for the first 2 days of the project. We had some context for how Vue.js should work because we had just learned React. Because we all loved Scrimba's React course, we started out by diving into their Vue.js course, which we all agreed was unfortunately not up to the same standard. So we switched gears and went directly to the Vue.js docs and video courses, which turned out to be very useful!
 
 Similar to `Create React App`, we discovered that you can easily spin up a Vue.js app in the CLI. So once we all felt like we had a good foundation in Vue.js, we started out by doing some paired programming to make sure we were all on the same page with our learning goals and understanding the code together. Once we felt comfortable with that, we were able to split up tasks to make sure we were on track to meet our deadline.
 
 ### Challenges
 While we were pleased that learning Vue.js from scratch in such a short amount of time was actually quite manageable, most of the issues we ran into were with the API. We used the free version from IQAir AirVisual, which has call limits by the minute, day, month, and year. This made building the app and QA testing new functionality more difficult because if we tried to interact with our form too quickly/too often, the API would throw an error in the console.
 
-We got around this by either waiting it out for a minute and, if the daily limit had been reached, getting a new API key. We did our best to mitigate the poor user experience this can cause with error handling, but there's only so much we could do with the free version of the API. The biggest change we'd make to our app without these call limits would be to refresh the timestamp (make a new API call) for each card in local storage on load, rather than just the current location card. For now, the user is only able to refresh location cards manually in order to reduce the number of calls made.
+We got around this by either waiting it out for a minute and, if the daily limit had been reached, getting a new API key. We did our best to mitigate the poor user experience this can cause with error handling, but this may be better managed if we were able to gain unlimited access to the necessary data. The biggest change we'd make to our app without these call limits would be to refresh the timestamp (make a new API call) for each card in local storage on load, rather than just the current location card. For now, the user is only able to refresh location cards manually in order to reduce the number of calls made.
 
 We had decided to bring in our data from the API calls early on in the process because we weren't sure how long it would take us to figure it out in the new framework. But in the future, we would likely try to hold out on implementing the API calls for as long as possible and bring in our data from our mock data file to speed up our development & QA testing process.
 
