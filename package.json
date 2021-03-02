@@ -5,13 +5,15 @@
   "scripts": {
     "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "cypress": "./node_modules/.bin/cypress open"
   },
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^3.0.0"
   },
   "devDependencies": {
+    "cypress": "^6.5.0",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
