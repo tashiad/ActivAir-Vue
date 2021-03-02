@@ -9,8 +9,27 @@
   border-radius: 1rem;
 }
 
+.location-title {
+  margin-bottom: none;
+}
+
+h3 {
+  margin: 0rem .5rem .5rem .5rem;
+}
+
+.weather-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 .weather-icon {
   width: 80px;
+  height: fit-content;
+}
+
+.air-quality-heading {
+  margin: 1rem;
 }
 
 .aqi-message {

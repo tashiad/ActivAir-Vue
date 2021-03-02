@@ -6,14 +6,18 @@
     <div v-else class="button-delete-container">
       <button class="card-button button-delete" type="button" name="button" v-on:click.prevent="deleteCard">X</button>
     </div>
-    <h2>{{ formatLocation() }}</h2>
-    <img :src="require(`../../assets/${formatWeatherIcon()}.png`)" :alt="weatherIconAlt" class="weather-icon">
-    <h3>Weather</h3>
-    <p>{{ temperature }}°F</p>
-    <p>Wind Speed: {{ windSpeed }}mph</p>
-    <p>Humidity: {{ humidity }}%</p>
+    <h2 class="location-title">{{ formatLocation() }}</h2>
+    <section class="weather-section">
+      <img :src="require(`../../assets/${formatWeatherIcon()}.png`)" :alt="weatherIconAlt" class="weather-icon">
+      <div class="weather-data-display">
+        <h3>Weather</h3>
+        <p>{{ temperature }}°F</p>
+        <p>Wind Speed: {{ windSpeed }}mph</p>
+        <p>Humidity: {{ humidity }}%</p>
+      </div>
+    </section>
     <hr>
-    <h3>Air Quality</h3>
+    <h3 class="air-quality-heading">Air Quality</h3>
     <div class="aqi-message">
       <div class="aqi-circle" :style="determineAqiStyle()"><p>AQI: {{ aqi }}</p></div>
       <p class="aqi-rating"><b>{{ determineAqiRating() }} </b><a href="https://www.airnow.gov/aqi-and-health/" target="_blank" rel="noreferrer"><img src="https://img.icons8.com/metro/16/000000/info.png" alt="black circle with lowercase i icon for more information"/></a></p>
