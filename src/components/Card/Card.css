@@ -58,7 +58,7 @@ h3 {
 
 .timeStamp {
   font-size: .8em;
-  color: gray;
+  color: #2c3e50;
   margin: 7% 5% 3% 5%;
 }
 
@@ -85,7 +85,7 @@ h3 {
 }
 
 .button-refresh {
-  color: gray;
+  color: #2c3e50;
   text-decoration: underline;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
