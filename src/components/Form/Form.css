@@ -51,7 +51,6 @@
   border-radius: 0.35rem;
 }
 
-
 @media screen and (max-width: 320px) {
   .form {
     width: 225px;
