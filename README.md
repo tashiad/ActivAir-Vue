@@ -27,7 +27,7 @@ JavaScript, Vue, RESTful APIs, Cypress, Local Storage, HTML, CSS
 ---
 
 ## Deployment
-[Deployment Link](https://activ-air.herokuapp.com/)
+[Deployment Link](https://activ-air-alia-peterson.vercel.app/)
 
 **To run locally:**
 1. Clone down this repo
