@@ -102,6 +102,10 @@ h3 {
   border-radius: 10px;
   margin: 5%;
   padding: 3% 5%;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  line-height: 1.5;
 }
 
 .button-allTrails:hover {
@@ -110,21 +114,6 @@ h3 {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   transition: all 0.4s ease 0s;
   cursor: pointer;
-}
-
-.button-allTrails:hover > .button-allTrails-text {
-  color: black;
-  font-weight: bold;
-  text-decoration: none;
-  line-height: 1.5;
-  cursor: pointer;
-}
-
-.button-allTrails-text {
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
-  line-height: 1.5;
 }
 
 @media screen and (max-width: 320px) {
