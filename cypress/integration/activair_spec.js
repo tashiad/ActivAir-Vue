@@ -1,14 +1,9 @@
 import key from '../../src/keyAPI'
+const baseUrl = 'http://localhost:8080/'
 
 describe('ActivAir Website', () => {
-  const baseUrl = 'http://localhost:8080/'
-  const citiesAPI = `http://api.airvisual.com/v2/cities?state=Colorado&country=USA&key=${key}`
-  const statesAPI = `http://api.airvisual.com/v2/states?country=USA&key=${key}`
-  const cityStateAPI = `http://api.airvisual.com/v2/city?city=Denver&state=Colorado&country=USA&key=${key}`
-  const nearestAPI = `http://api.airvisual.com/v2/nearest_city?key=${key}`
-
   it('Should display a header with website name and subheader', () => {
-    cy.intercept('GET', statesAPI, { fixture: 'state-data' })
+    cy.intercept('GET', 'states', { fixture: 'state-data' })
       .visit(baseUrl)
       .get('header')
       .get('h1').should('have.text', 'ActivAir')
@@ -16,18 +11,18 @@ describe('ActivAir Website', () => {
   })
 
   it('Should populate a location card with mock nearest location data', () => {
-    cy.intercept('GET', nearestAPI, { fixture: 'location-thornton' })
-      .intercept('GET', statesAPI, { fixture: 'state-data' })
+    cy.intercept('GET', 'states', { fixture: 'state-data' })
       .visit(baseUrl)
+      .intercept('GET', 'nearest', { fixture: 'location-boulder' })
       .get('input[name=nearestLocation]').click()
-      .get('.location-card').find('h2').should('have.text', 'Thornton, Colorado')
+      .get('.location-card').find('h2').should('have.text', 'Boulder, Colorado')
   })
 
   it('Should populate state and city dropdowns with relevant information and create a card from the selected location', () => {
-    cy.intercept('GET', cityStateAPI, { fixture: 'location-denver' })
-      .intercept('GET', statesAPI, { fixture: 'state-data' })
-      .intercept('GET', citiesAPI, { fixture: 'city-data' })
+    cy.intercept('GET', 'states', { fixture: 'state-data' })
       .visit(baseUrl)
+      .intercept('GET', 'city=Denver', { fixture: 'location-denver' })
+      .intercept('GET', 'cities?state=Colorado', { fixture: 'city-data' })
       .get('select#dropdown-states').select('Colorado').should('have.value', 'Colorado')
       .get('select#dropdown-cities').select('Denver').should('have.value', 'Denver')
       .get('input[name=submit]').click()
@@ -36,13 +31,13 @@ describe('ActivAir Website', () => {
   })
 
   it('Should display an error message when the server returns a 400 error', () => {
-    cy.intercept('GET', statesAPI, { statusCode: 404 })
+    cy.intercept('GET', 'states', { statusCode: 404 , body: 'failure'})
       .visit(baseUrl)
       .get('.error-message').should('have.text', 'Please wait a minute and refresh the page. Something went wrong with the server.')
   })
 
   it('Should display an error message when the server returns a 500 error', () => {
-    cy.intercept('GET', statesAPI, { statusCode: 500 })
+    cy.intercept('GET', 'states', { statusCode: 500, body: 'failure' })
       .visit(baseUrl)
       .get('.error-message').should('have.text', 'Please wait a minute and refresh the page. Something went wrong with the server.')
   })
