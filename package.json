@@ -10,6 +10,7 @@
     "test": "start-server-and-test start http://localhost:3030 cy:run"
   },
   "dependencies": {
+    "chokidar-cli": "^2.1.0",
     "core-js": "^3.6.5",
     "travis": "^0.1.1",
     "vue": "^3.0.0"
