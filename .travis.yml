@@ -12,7 +12,10 @@ cache:
   npm: true
   directories:
     - ~/.cache
+install:
+  - npm ci
+  - npm run build
 before_script:
-  - npm start
+  - npm start & wait-on http://localhost:8080
 script:
   - $(npm bin)/cypress run
