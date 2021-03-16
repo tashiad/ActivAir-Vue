@@ -7,13 +7,11 @@ deploy:
     secure: sVem/1xIKQon8xze98WFxEKSfI3QvWGvyCR4dDqzPAqhMnXc1jfhg6U0hp7YS2uMZZgtF3LpYD1sXbbqAcPAtRs2UwNMjkOV0/GMZT+uLK+wZejv7419HCBiRgGlkK5bheD/k3Usn0E1b4uh/Bc0LxqOjWOBQHxYfumhiQw480XYkkd5Ar4B3cdFA59GE5waUpT+pUfmB6+/1U2h/RIlKXlmfxDxpYG/nnVZ8rLOpNvgQZVpOmSvEHEUc8ui1CtEjwP5RQU8b7iJtmmHSSYW+VPnVOHjhoei9+FHBkb2kCc8uuR6+hYr+kDcWUE5+TcAXseM+0euJLMuNJtXNBJOfDYVFJpepxW6lmkaMyvw8RnHa3Cia35vyoqn1dUaH71gBtsGJ5QXc1PsYx29hQNVXQY94Gr+h8cH8Iosy/8n/hCGQEa2756nOfgsxDj14z2KMfbU+YqrDTFhi2jfN8FYhu7t4Wa1syVQNrLvQEi9ogTfYOXehBaermqkQ5Bp5Rq41OOBtfCDcKo1j9YokFDLk+oQhCVtLQxK9FYPzw+8ZxZPcK/xB9pPiGmqSTJze5MjHRBFWdy+az6BGdSzsD9DyjLBQFg5ck9XUotgdRmiVm1nxdDIeELiPPaZ66gjfKDnbUfUF3M/FLLO1ZXIHxalQWXIhTKf0RweeY92IGaE/XA=
   app: activair
   skip_cleanup: true
+  on: main
 cache:
   npm: true
   directories:
     - ~/.cache
-install:
-  - npm ci
-  - npm run build
 before_script:
   - npm start
 script:
